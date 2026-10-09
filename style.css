@@ -1,0 +1,82 @@
+/* 1. KOLORY I CZCIONKI: zmieniasz tu, a zmienia się cała strona */
+:root{
+  --black:#14110F; --caramel:#C98A3B; --brown:#5A3A22;
+  --cream:#F3E6D0; --ruby:#B3203A; --fur:#EADFC6;
+  --display:"Abril Fatface",Georgia,serif;
+  --body:"Figtree",system-ui,sans-serif;
+  --leo:url("leopard.svg");   /* wzór panterki (osobny plik obok tego CSS) */
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--cream);color:var(--black);line-height:1.6;font-size:1.05rem}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ruby);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.05}
+section,.hero{scroll-margin-top:64px}
+
+/* Klasy dla biblioteki Lenis (płynne przewijanie) */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+
+/* 2. MENU */
+header{position:fixed;inset:0 0 auto 0;z-index:20;background:var(--black);border-bottom:4px solid var(--caramel)}
+nav{display:flex;align-items:center;gap:1.2rem;padding:.8rem 1.2rem;max-width:1100px;margin:auto}
+.logo{font-family:var(--display);color:var(--caramel);text-decoration:none;font-size:1.4rem;white-space:nowrap}
+#nav-links{display:flex;gap:1.2rem;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+#nav-links a{color:var(--cream);text-decoration:none;white-space:nowrap;font-size:.95rem}
+#nav-links a:hover{color:var(--caramel);text-decoration:underline}
+/* Mały, prosty przełącznik języka: aktywny język jest karmelowy */
+#lang{font:400 .8rem var(--body);color:var(--cream);background:none;border:0;padding:.2rem;cursor:pointer;white-space:nowrap}
+#lang .on{color:var(--caramel);font-weight:600}
+#lang:hover{text-decoration:underline}
+
+/* 3. HERO (panterka) */
+.hero{min-height:100vh;display:grid;place-items:center;padding:6rem 1.2rem 2rem;background:var(--fur) var(--leo);background-size:420px}
+.hero-card{background:var(--cream);border:5px solid var(--black);box-shadow:12px 12px 0 var(--black);padding:2.2rem;max-width:620px}
+h1{font-size:clamp(2.4rem,7vw,4rem)}
+.hero-card p{margin:1rem 0 1.5rem}
+.btn{display:inline-block;background:var(--ruby);color:var(--cream);padding:.7rem 1.4rem;text-decoration:none;font-weight:600;border:3px solid var(--black)}
+.btn:hover{background:var(--black)}
+
+/* 4. O MNIE: wysoki kontener, a w nim ekran "przyklejony" (sticky). Słowa zapalają się przy scrollu */
+.about-wrap{height:260vh;background:var(--black)}
+.about{position:sticky;top:0;height:100vh;display:grid;place-items:center;padding:5rem 1.2rem 2rem;color:var(--cream)}
+.about p{max-width:36ch;font-family:var(--display);font-size:clamp(1.5rem,3.4vw,2.7rem);line-height:1.2}
+.about .w{opacity:.18}
+
+/* 5. PROJEKTY: zwykłe sekcje jedna pod drugą, bez nakładania */
+.projects{background:var(--brown);color:var(--cream);padding:7rem 1.2rem 3rem}
+.projects-title{max-width:1100px;margin:0 auto 1rem;font-size:clamp(2.4rem,7vw,4.5rem);color:var(--caramel)}
+.slide{max-width:1100px;margin:auto;min-height:85vh;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding:3rem 0}
+.slide.rev .art{order:2}
+.art{aspect-ratio:1;max-height:62vh;width:100%;background:var(--fur) var(--leo);background-size:340px;border:6px solid var(--black);box-shadow:10px 10px 0 var(--black)}
+.slide h3{font-size:clamp(2.2rem,6vw,3.8rem);color:var(--caramel);margin-bottom:1rem}
+.slide .tags{font-weight:600;color:var(--caramel);display:block;margin:1rem 0 1.5rem}
+
+/* 6. UMIEJĘTNOŚCI I KONTAKT */
+section.plain{padding:6rem 1.2rem}
+.wrap{max-width:1000px;margin:auto}
+.plain h2{font-size:clamp(2rem,5vw,3rem);margin-bottom:1rem}
+.lead{max-width:56ch;margin-bottom:1.6rem}
+.skills{display:flex;flex-wrap:wrap;gap:.7rem;list-style:none;padding:0}
+.skills li{border:3px solid var(--black);padding:.35rem 1rem;background:var(--caramel);font-weight:600}
+.contact{background:var(--ruby);color:var(--cream)}
+.contact p{margin-bottom:.4rem}
+footer{background:var(--black);color:var(--cream);text-align:center;padding:1.5rem;font-size:.9rem}
+
+/* 7. TELEFON */
+@media (max-width:700px){
+  nav{gap:.7rem;padding:.7rem .8rem}
+  .logo{font-size:1.15rem}
+  .slide{grid-template-columns:1fr;gap:1.5rem;min-height:auto;padding:2.5rem 0}
+  .slide.rev .art{order:0}
+  .art{aspect-ratio:auto;height:34vh}
+}
+
+/* 8. Osoby z wyłączonymi animacjami: wszystko stoi w miejscu i jest od razu widoczne */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .about-wrap{height:auto}
+  .about{position:static;min-height:60vh;height:auto}
+  .about .w{opacity:1}
+}

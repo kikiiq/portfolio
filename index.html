@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kinga | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- MENU: logo, linki do projektów (budowane w script.js) i przełącznik języka -->
+<header>
+  <nav>
+    <a class="logo" href="#top">Kinga</a>
+    <div id="nav-links"></div>
+    <button id="lang" type="button"><span>PL</span> / <span>EN</span></button>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- HERO: powitanie na tle panterki. Teksty wstawia script.js (atrybut data-i wskazuje, który tekst) -->
+  <div class="hero">
+    <div class="hero-card reveal">
+      <h1 data-i="hero_title"></h1>
+      <p data-i="hero_text"></p>
+      <a class="btn" href="#projekty" data-i="hero_btn"></a>
+    </div>
+  </div>
+
+  <!-- O MNIE: wysoki kontener, a w nim ekran "przyklejony" (sticky). Słowa zapalają się przy scrollu -->
+  <div class="about-wrap" id="about-wrap">
+    <section class="about" id="o-mnie">
+      <p id="about-text"></p>
+    </section>
+  </div>
+
+  <!-- PROJEKTY: karty tworzy script.js z listy projektów -->
+  <section class="projects" id="projekty">
+    <h2 class="projects-title reveal" data-i="projects"></h2>
+    <div id="slides"></div>
+  </section>
+
+  <section class="plain" id="umiejetnosci">
+    <div class="wrap reveal">
+      <h2 data-i="skills_title"></h2>
+      <p class="lead" data-i="skills_lead"></p>
+      <ul class="skills" id="skills"></ul>
+    </div>
+  </section>
+
+  <section class="plain contact" id="kontakt">
+    <div class="wrap reveal">
+      <h2 data-i="contact_title"></h2>
+      <p><span data-i="contact_text"></span> <a href="mailto:jesiolowskaa.social@icloud.com">jesiolowskaa.social@icloud.com</a></p>
+      <p><a href="https://github.com/kikiiq" target="_blank" rel="noopener">GitHub: github.com/kikiiq</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 Kinga Jesiołowska</footer>
+
+<!-- Lenis: opcjonalna biblioteka do płynnego przewijania. Gdy się nie załaduje, strona działa tak samo. -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
